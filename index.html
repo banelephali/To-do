@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <title>Orbit | Flow</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="iphone-shell">
+        <div id="sidebar" class="sidebar-overlay" onclick="closeSidebar(event)">
+            <div class="sidebar-content" id="sidebar-sheet">
+                <div class="pull-indicator"><div class="sidebar-handle"></div></div>
+                <div class="sidebar-header"><h3>Analytics</h3></div>
+               <div class="analytics-tabs">
+    <div class="segmented-control">
+        <button class="tab-btn active" id="tab-day" onclick="updateStats('day')">Day</button>
+        <button class="tab-btn" id="tab-week" onclick="updateStats('week')">Week</button>
+        <button class="tab-btn" id="tab-month" onclick="updateStats('month')">Month</button>
+        <button class="tab-btn" id="tab-year" onclick="updateStats('year')">Year</button>
+    </div>
+</div>
+                <div id="stats-display" class="stats-grid"></div>
+                
+                <div class="theme-menu">
+                    <p>Appearance</p>
+                    <div class="theme-btns">
+                        <button class="t-btn" onclick="setTheme('light')">Light</button>
+                        <button class="t-btn" onclick="setTheme('dark')">Dark</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="calendar-modal" class="modal-overlay" onclick="closeCalendarModal(event)">
+            <div class="modal-content">
+                <div class="modal-nav">
+                    <button onclick="changeMonth(-1)" class="nav-btn">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+                    </button>
+                    <h3 id="modal-month-label"></h3>
+                    <button onclick="changeMonth(1)" class="nav-btn">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+                    </button>
+                </div>
+                <div class="calendar-grid-header">
+                    <span>S</span><span>M</span><span>T</span><span>W</span><span>T</span><span>F</span><span>S</span>
+                </div>
+                <div id="calendar-grid" class="calendar-grid"></div>
+            </div>
+        </div>
+
+        <header class="glass-header">
+            <div class="top-row">
+                <span id="jump-today" class="action-text">Today</span>
+                <div class="center-title"><span id="header-day"></span> <span id="header-date"></span></div>
+                <div id="open-settings" class="icon-btn">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+                </div>
+            </div>
+            <div class="month-selector" id="month-label" onclick="openCalendarModal()">Loading...</div>
+            <div id="mini-scroller" class="date-scroller"></div>
+        </header>
+
+        <main id="task-feed" class="task-container"></main>
+
+        <footer class="input-dock">
+            <div class="dock-card">
+                <input type="text" id="task-input" placeholder="What's the plan?">
+                <div class="dock-controls">
+                    <div class="dropdown-wrapper">
+                        <div class="custom-trigger" onclick="toggleDropUp()">
+                            <span id="selected-cat-display">Academics</span>
+                            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M18 15l-6-6-6 6"/></svg>
+                        </div>
+                        <div id="drop-up-menu" class="drop-up-content"></div>
+                    </div>
+                   <button id="add-btn" class="icon-submit-btn">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="12" y1="5" x2="12" y2="19"></line>
+        <line x1="5" y1="12" x2="19" y2="12"></line>
+    </svg>
+</button>
+                </div>
+            </div>
+        </footer>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
