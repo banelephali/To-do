@@ -1,3 +1,11 @@
+// Fix for mobile 100vh
+function setDocHeight() {
+    document.documentElement.style.setProperty('--vh', `${window.innerHeight * 0.01}px`);
+}
+window.addEventListener('resize', setDocHeight);
+window.addEventListener('orientationchange', setDocHeight);
+setDocHeight();
+
 let categories = JSON.parse(localStorage.getItem('orbit_cats')) || ["Academics", "Fitness", "Reading", "Work", "Programming"];
 let tasks = JSON.parse(localStorage.getItem('orbit_flow_v12')) || [];
 let selectedDate = new Date().toLocaleDateString('en-CA');
@@ -200,4 +208,5 @@ setTheme(localStorage.getItem('theme') || 'light');
 refreshCategoryMenu();
 initCalendar();
 updateHeader(new Date());
+
 render();
